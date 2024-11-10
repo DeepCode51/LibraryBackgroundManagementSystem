@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta charset="utf-8">
+<!--字体图标-->
+<link href="../../javaex/pc/css/icomoon.css" rel="stylesheet" />
+<!--动画-->
+<link href="../../javaex/pc/css/animate.css" rel="stylesheet" />
+<!--骨架样式-->
+<link href="../../javaex/pc/css/common.css" rel="stylesheet" />
+<!--皮肤（缇娜）-->
+<link href="../../javaex/pc/css/skin/tina.css" rel="stylesheet" />
+<!--jquery，不可修改版本-->
+<script src="../../javaex/pc/lib/jquery-1.7.2.min.js"></script>
+<!--全局动态修改-->
+<script src="../../javaex/pc/js/common.js"></script>
+<!--核心组件-->
+<script src="../../javaex/pc/js/javaex.min.js"></script>
+<!--表单验证-->
+<script src="../../javaex/pc/js/javaex-formVerify.js"></script>
+<title>后台管理</title>
+</head>
+<style>
+    
+</style>
+
+<body>
+    <!--全部主体内容-->
+<div class="list-content">
+	<!--块元素-->
+	<div class="block">
+		<!--修饰块元素名称-->
+		<div class="banner">
+			<p class="tab fixed">个人信息</p>
+		</div>
+	
+		<!--正文内容-->
+		<div class="main">
+			<form id="form">
+				<!--文本框-->
+				<div class="unit clear">
+					<div class="left"><span class="required">*</span><p class="subtitle">昵称</p></div>
+					<div class="right">
+						<input type="text" class="text" id="nickname" name="nickname" readonly="readonly"/>
+					</div>
+				</div>
+
+				<div class="unit clear">
+					<div class="left"><span class="required">*</span><p class="subtitle">用户名</p></div>
+					<div class="right">
+						<input type="text" class="text" id="username" name="username" readonly="readonly"/>
+					</div>
+				</div>
+
+				<div class="unit clear">
+					<div class="left"><span class="required">*</span><p class="subtitle">密码</p></div>
+					<div class="right">
+						<input type="password" class="text" id="password" name="password" readonly="readonly"/>
+					</div>
+				</div>
+
+				<div class="unit clear">
+					<div class="left"><span class="required"></span><p class="subtitle">生日</p></div>
+					<div class="right">
+						<input type="text" class="text" id="birthday" name="birthday" readonly="readonly"/>
+					</div>
+				</div>
+
+				<div class="unit clear">
+					<div class="left"><span class="required"></span><p class="subtitle">电话</p></div>
+					<div class="right">
+						<input type="text" class="text" id="tel" name="tel" readonly="readonly"/>
+					</div>
+				</div>
+
+				<!--下拉选择框-->
+				<div class="unit clear">
+					<div class="left"><span class="required"></span><p class="subtitle">身份</p></div>
+					<div class="right">
+						<input type="text" class="text" id="ident" name="ident" readonly="readonly"/>
+					</div>
+				</div>
+
+				<div class="unit clear">
+					<div class="left"><span class="required"></span><p class="subtitle">邮箱</p></div>
+					<div class="right">
+						<input type="text" class="text" id="email" name="email" readonly="readonly"/>
+					</div>
+				</div>
+
+				<div class="unit clear">
+					<div class="left"><span class="required"></span><p class="subtitle">地址</p></div>
+					<div class="right">
+						<input type="text" class="text" id="address" name="address" readonly="readonly"/>
+					</div>
+				</div>
+
+				<div class="unit clear">
+					<div class="left"><span class="required"></span><p class="subtitle">可借数量</p></div>
+					<div class="right">
+						<input type="text" class="text" id="size" name="size" readonly="readonly"/>
+					</div>
+				</div>
+				<br>
+				<br>
+
+			</form>
+		</div>
+	</div>
+</div>
+
+<script>
+
+	javaex.select({
+		id : "select",
+		isSearch : false
+	});
+
+	// 页面加载执行
+    $(document).ready(function(){
+        // get读取参数
+        $.get("/user/currUser", function(data){
+            var user = data.data;
+            $("#nickname").val(user.nickname);
+            $("#username").val(user.username);
+            $("#password").val(user.password);
+            $("#birthday").val(user.birth);
+            $("#tel").val(user.tel);
+            $("#email").val(user.email);
+            $("#address").val(user.address);
+            $("#size").val(user.size);
+            $("#ident").val(user.ident);
+
+            return false;
+		});
+	});
+
+</script>
+</body>
+</html>
